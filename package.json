@@ -1,0 +1,22 @@
+{
+  "name": "perda_padaria",
+  "version": "1.0.0",
+  "description": "projeto estudo sobre desperdicio em padaria",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ricardohirano/perda_padaria.git"
+  },
+  "author": "ricardo hirano",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ricardohirano/perda_padaria/issues"
+  },
+  "homepage": "https://github.com/ricardohirano/perda_padaria#readme",
+  "dependencies": {
+    "express": "^4.21.1"
+  }
+}
