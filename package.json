@@ -17,6 +17,8 @@
   },
   "homepage": "https://github.com/ricardohirano/perda_padaria#readme",
   "dependencies": {
-    "express": "^4.21.1"
+    "ejs": "^3.1.10",
+    "express": "^4.21.1",
+    "save": "^2.9.0"
   }
 }
