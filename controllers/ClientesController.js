@@ -23,5 +23,24 @@ router.get("/clientes", function( req, res){
         res.redirect("/clientes")
     })
  })
-
+ // ROTA DE EXCLUSAO DE CLIENTES
+ router.get("/clientes/delete/:id", (req, res) => {
+    const id = req.params.id
+    Cliente.destroy({
+        where: {
+            id : id
+        }
+    }).then(()=> {
+        res.redirect("/clientes")
+    })
+ })
+ // ROTA DE EDIÇÃO DE CLIENTES
+ router.get("/clientes/edit/:id", (req, res) => {
+    const id = req.params.id
+    Cliente.findByPk(id).then(function(cliente) {
+    res.render("clienteEdit", {
+    cliente : cliente
+    })
+    })
+    })
 export default router
