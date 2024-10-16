@@ -10,20 +10,44 @@ app.get ("/", function(req, res){
 app.get("/perfil", function (req, res){
     res.render("perfil")
 })
-
-// ROTA PEDIDO
+// UTILIZACAO DA PASTA PUBLIC PARA ARQUIVOS ESTATICOS EX IMAGEM CSS OU JAVASCRIPT
+app.use(express.static('public'));
+// ROTA Pedidos
 app.get("/pedidos", function( req, res){
-    var produtos = [
-        { nome: "Celular", preço: 3000},
-        { nome: "Computador", preço: 4000},
-        { nome: "Tablet", preço: 1500},
-        { nome: "Fone", preço: 200},
+    var pedidos = [
+        { numero: 1, preco: "R$:10.000,00"},
+        { numero: 2, preco: "R$:2.000,00"},
+        { numero: 3, preco: "R$:20.000,00"},
+        { numero: 4, preco: "R$:15.000,00"}
     ]
     res.render ("pedidos", {
+        pedidos: pedidos
+    })
+})
+// ROTA Produtos
+app.get("/produtos", function( req, res){
+    var produtos = [
+        { nome: "Iphone", preco: "R$:3000,00", categoria: "Celular"},
+        { nome: "MacBook Pro", preco: "R$:15000,00", categoria: "Computador" },
+        { nome: "Samsung Galaxy S21", preco: "R$:4000,00", categoria: "Celular" },
+        { nome: "Apple Watch", preco: "R$:2500,00", categoria: "Smartwatch" }
+    ]
+    res.render ("produtos", {
         produtos: produtos
     })
 })
-
+// ROTA CLIENTES
+app.get("/clientes", function( req, res){
+    var cadastros = [
+        { nome: "Ricardo", cpf: "123.456.789-10", endereco: "rua x"},
+        { nome: "Monica", cpf: "321.654.987-01", endereco: "rua y"},
+        { nome: "Vitoria", cpf: "111.222.333-03", endereco: "rua z"},
+        { nome: "Enzo", cpf: "444.555.666-08", endereco: "rua w"},
+    ]
+    res.render ("clientes", {
+        cadastros: cadastros
+    })
+})
 /*
 //rota principal
 app.get("/", function(req, res){

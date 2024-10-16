@@ -1,28 +1,19 @@
-<!DOCTYPE html>
-<html lang="pt-br">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pedidos</title>
-</head>
-<body>
-    <h1>Meus pedidos</h1>
-    <hr>
-    <h4> Iniciando estudos com Node.js </h4>
-    <p> Essa pagina esta sendo renderizada com EJS.</p>
-    <h4> Produtos: </h4>
+<%- include ('partials/navbar.ejs') %>
+<%- include ('partials/header.ejs') %>
+
+    <h1>Pedidos</h1>
+    
     <table border="1">
         <tr>
-            <th width="120px">Nome:</th>
-            <th>Preço:</th>
+            <th width="150px">Numero Pedido:</th>
+            <th>Valor:</th>
         </tr>
-    <% produtos.forEach(function(produto){ %>
+            <% pedidos.forEach((pedido)=>{ %>
         <tr>
-        <td><%= produto.nome %></td>
-        <td><%= produto.preco %></td>    
+            <td><%= pedido.numero %></td>
+            <td><%= pedido.preco %></td> 
         </tr>
-    <% }) %>
+            <% }) %>
     </table>
-    
-</body>
-</html>
+
+<%- include ('partials/footer.ejs') %>  
