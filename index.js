@@ -1,9 +1,51 @@
+// IMPORTANDO O EXPRESS
+import express from "express"
+//INICIANDO O EXPRESS
+const app = express()
+// IMPORTANDO OS CONTROLLERS (ONDE ESTAO AS ROTAS)
+import ClientesController from "./controllers/ClientesController.js"
+import PedidosController from "./controllers/PedidosController.js"
+import ProdutosController from "./controllers/ProdutosController.js"
+//DEFININDO O USO DAS ROTAS DOS CONTROLLERS
+app.use("/", ClientesController)
+app.use("/", PedidosController)
+app.use("/", ProdutosController)
+// indicar  EJS
+app.set('view engine', 'ejs');
+// UTILIZACAO DA PASTA PUBLIC PARA ARQUIVOS ESTATICOS EX IMAGEM CSS OU JAVASCRIPT
+app.use(express.static('public'));
+
+
+// IMPORTE O SEQUELIZE
+import connection from "./config/sequelize-config.js";
+
+// REALIZANDO A CONEXAO COM O BANCO DE DADOS
+    connection.authenticate().then(()=>{
+        console.log("Conexao com o banco de dados feita com sucesso!")
+    }).catch((error)=>{
+        console.log(error)
+    })
+// CRIANDO O BANCO DE DADOS SE ELE NAO EXISTIR
+connection.query(`CREATE DATABASE IF NOT EXISTS loja;`).then(()=>{
+    console.log("o banco de dados esta criado.")
+}).catch((error) => {
+    console.log(error)
+})  
+
+//inciando servidor
+app.listen(3000, function(erro){
+    if(erro){
+        console.log("Ocorreu um erro!)");
+    } else {
+            console.log("Servidor iniciado com sucesso!");
+    }
+});
+
+/*
 // Importando o express
 const express = require("express");
 // Inicioando o express
 const app = express(); 
-// indicar  EJS
-app.set('view engine', 'ejs');
 app.get ("/", function(req, res){
     res.render("index")
 })
@@ -12,6 +54,8 @@ app.get("/perfil", function (req, res){
 })
 // UTILIZACAO DA PASTA PUBLIC PARA ARQUIVOS ESTATICOS EX IMAGEM CSS OU JAVASCRIPT
 app.use(express.static('public'));
+
+
 // ROTA Pedidos
 app.get("/pedidos", function( req, res){
     var pedidos = [
