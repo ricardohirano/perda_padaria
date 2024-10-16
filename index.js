@@ -2,6 +2,9 @@
 import express from "express"
 //INICIANDO O EXPRESS
 const app = express()
+//PERMITE RECEBER DADOS VINDO DE FORMULARIOS
+app.use(express.urlencoded({ extend: true}))
+app.use(express.json())
 // IMPORTANDO OS CONTROLLERS (ONDE ESTAO AS ROTAS)
 import ClientesController from "./controllers/ClientesController.js"
 import PedidosController from "./controllers/PedidosController.js"
@@ -31,15 +34,12 @@ connection.query(`CREATE DATABASE IF NOT EXISTS loja;`).then(()=>{
 }).catch((error) => {
     console.log(error)
 })  
+//PERMITE RECEBER DADOS VINDO DE FORMULARIOS
+    app.use(express.urlencoded({ extend: true}))
+    app.use(express.json())
 
-//inciando servidor
-app.listen(3000, function(erro){
-    if(erro){
-        console.log("Ocorreu um erro!)");
-    } else {
-            console.log("Servidor iniciado com sucesso!");
-    }
-});
+// ROTA DE CADASTRO DE CLIENTES
+
 
 /*
 // Importando o express
